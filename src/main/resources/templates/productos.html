@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - HogarStyle</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="logo">HogarStyle</div>
+    <nav>
+        <a th:href="@{/}">Inicio</a>
+        <a th:href="@{/productos}">Productos</a>
+        <a th:href="@{/login}">Iniciar sesión</a>
+    </nav>
+</header>
+
+<main class="container">
+
+    <section class="titulo-row">
+        <h1>Gestión de Productos</h1>
+        <a class="btn" th:href="@{/productos/nuevo}">Nuevo producto</a>
+    </section>
+
+    <div th:if="${#lists.isEmpty(productos)}" class="empty-state">
+        <p>No hay productos registrados aún.</p>
+    </div>
+
+    <table th:if="${not #lists.isEmpty(productos)}" class="tabla-productos">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Categoría</th>
+            <th>Precio costo</th>
+            <th>Precio venta</th>
+            <th>Stock</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="producto : ${productos}">
+            <td th:text="${producto.id}"></td>
+            <td th:text="${producto.codigo}"></td>
+            <td th:text="${producto.nombre}"></td>
+            <td th:text="${producto.descripcion}"></td>
+            <td th:text="${producto.categoria}"></td>
+            <td th:text="${producto.precioCosto}"></td>
+            <td th:text="${producto.precioVenta}"></td>
+            <td th:text="${producto.stock}"></td>
+            <td>
+                <a class="btn small"
+                   th:href="@{/productos/editar/{id}(id=${producto.id})}">
+                    Editar
+                </a>
+
+                <a class="btn danger small"
+                   th:href="@{/productos/eliminar/{id}(id=${producto.id})}">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</main>
+
+<footer>
+    <p>© 2026 HogarStyle - Todos los derechos reservados</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión - HogarStyle</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+
+<header>
+    <div class="logo">HogarStyle</div>
+
+    <nav>
+        <a th:href="@{/}">Inicio</a>
+        <a th:href="@{/productos}">Productos</a>
+        <a href="#">Categorías</a>
+        <a th:href="@{/login}">Iniciar sesión</a>
+    </nav>
+</header>
+
+<main class="login-container">
+
+    <div class="login-card">
+
+        <h1>Iniciar sesión</h1>
+
+        <p>Ingresa a tu cuenta de HogarStyle</p>
+
+        <form>
+
+            <div class="form-group">
+                <label for="usuario">Usuario</label>
+                <input
+                    type="text"
+                    id="usuario"
+                    name="usuario"
+                    placeholder="Ingresa tu usuario"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Ingresa tu contraseña"
+                    required>
+            </div>
+
+            <button type="submit">Iniciar sesión</button>
+
+        </form>
+
+        <a class="volver" th:href="@{/}">Volver al inicio</a>
+
+    </div>
+
+</main>
+
+<footer>
+    <p>© 2026 HogarStyle - Todos los derechos reservados</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Productos - HogarStyle</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <div class="logo">HogarStyle</div>
+        <nav>
+            <a th:href="@{/}">Inicio</a>
+            <a th:href="@{/productos}">Productos</a>
+            <a th:href="@{/login}">Iniciar sesión</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2>Formulario de Producto</h2>
+        
+        <div class="form-container">
+            <form th:action="@{/productos/guardar}" method="post" class="form-producto">
+                
+                <!-- Campo oculto para manejar la edición por ID -->
+                <input type="hidden" name="id" th:value="${producto.id}">
+
+                <div class="form-group">
+                    <label for="codigo">Código:</label>
+                    <input type="text" id="codigo" name="codigo" th:value="${producto.codigo}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" th:value="${producto.nombre}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion" th:text="${producto.descripcion}"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="categoria">Categoría:</label>
+                    <input type="text" id="categoria" name="categoria" th:value="${producto.categoria}">
+                </div>
+
+                <div class="form-group">
+                    <label for="precioCosto">Precio de costo:</label>
+                    <input type="number" step="0.01" id="precioCosto" name="precioCosto" th:value="${producto.precioCosto}">
+                </div>
+
+                <div class="form-group">
+                    <label for="precioVenta">Precio de venta:</label>
+                    <input type="number" step="0.01" id="precioVenta" name="precioVenta" th:value="${producto.precioVenta}">
+                </div>
+
+                <div class="form-group">
+                    <label for="stock">Stock:</label>
+                    <input type="number" id="stock" name="stock" th:value="${producto.stock}">
+                </div>
+
+                <div class="form-actions" style="display: flex; gap: 1rem; margin-top: 1rem;">
+                    <button type="submit" class="btn">Guardar</button>
+                    <a th:href="@{/productos}" class="btn secondary" style="text-decoration: none; text-align: center; display: inline-flex; align-items: center; justify-content: center;">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 HogarStyle - Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>
